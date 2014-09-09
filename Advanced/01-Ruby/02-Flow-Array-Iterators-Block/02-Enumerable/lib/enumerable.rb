@@ -2,16 +2,14 @@ def sum_odd_indexed(array)
   # TODO: computes the sum of elements at odd indices (1, 3, 5, 7, etc.)
   #       You should make use Enumerable#each_with_index
   sum = 0
-  array.each_with_index do |num, index|
-    sum += num if (index % 2 == 1)
-  end
+  array.each_with_index { |num, index| sum += num if index.odd? }
   sum
 end
 
 def even_numbers(array)
   # TODO: Return the even numbers from a list of integers.
   #       You should use Enumerable#select
-  array.select { |num| num % 2 == 0 }
+  array.select { |num| num.even? }
 end
 
 def short_words(array, max_length)
@@ -35,8 +33,8 @@ end
 def product(array)
   # TODO: Calculate the product of an array of numbers.
   #       You should use of Enumerable#reduce
-  # array.reduce(:*)
-  array.reduce { |product, num| product * num }
+  array.reduce(:*)
+  # array.reduce { |product, num| product * num }
 end
 
 def sorted_pairs(array)
