@@ -18,12 +18,12 @@ students = wagon_sort(students)
 students_string = ""
 students.each_with_index do |student, index|
 
-  if index == students.size - 2
-    students_string += student + " and "
-  elsif index == students.size - 1
-    students_string += student
+  if (students.empty?)
+    students_string = ""
+  elsif (students.size == 1)
+    students_string = students.first
   else
-    students_string += student + ", "
+    students_string = students.slice(0...-1).join(", ") + " and " + students.last
   end
 
 end
