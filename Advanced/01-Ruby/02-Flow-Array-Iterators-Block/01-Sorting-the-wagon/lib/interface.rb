@@ -16,12 +16,11 @@ end while name != ""
 students = wagon_sort(students)
 
 students_string = ""
-if (students.empty?)
-  students_string = ""
-elsif (students.size == 1)
-  students_string = students.first
+if students.size > 1
+  first_part = students.take(students.size - 1).join(", ")
+  students_string = "#{first_part} and #{students.last}"
 else
-  students_string = students.slice(0...-1).join(", ") + " and " + students.last
+  students_string = students.first
 end
 
 puts "Congratulations! Your Wagon has #{students.size} students:
