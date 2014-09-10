@@ -33,11 +33,22 @@ def run_game(attempt, grid, start_time, end_time)
 end
 
 def attempt_is_in_the_grid?(attempt, grid)
-
+  attempt.split("").all? { |character| grid.include? character }
 end
 
 def translate(attempt)
+  # get json from API
+  api_url = "http://api.wordreference.com/0.8/80143/json/enfr/" + attempt
 
+  word_translated = ""
+  open(api_url) do |stream|
+    response = JSON.parse(stream.read)
+    unless response["error"]
+      word_translated = response['term0']['PrincipalTranslations']['0']['FirstTranslation']['term']
+    end
+  end
+  puts word_translated
+  word_translated
 end
 
 def compute_score(attempt, duration)
