@@ -16,16 +16,12 @@ end while name != ""
 students = wagon_sort(students)
 
 students_string = ""
-students.each_with_index do |student, index|
-
-  if (students.empty?)
-    students_string = ""
-  elsif (students.size == 1)
-    students_string = students.first
-  else
-    students_string = students.slice(0...-1).join(", ") + " and " + students.last
-  end
-
+if (students.empty?)
+  students_string = ""
+elsif (students.size == 1)
+  students_string = students.first
+else
+  students_string = students.slice(0...-1).join(", ") + " and " + students.last
 end
 
 puts "Congratulations! Your Wagon has #{students.size} students:
